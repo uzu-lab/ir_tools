@@ -23,7 +23,7 @@ export function ejs_download() {
     const link = document.createElement('a');
     const blob = new Blob([html], {type: 'text/html'})
     link.href = URL.createObjectURL(blob);
-    link.download = window.location.pathname.split('/').pop().replace('.html', '.ejs') || 'index.ejs';
+    link.download = window.location.pathname.replace(/(.+)\/$/, '$1').split('/').pop().replace('.html', '.ejs') || 'index.ejs';
     link.click();
   };
 
