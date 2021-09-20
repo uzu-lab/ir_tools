@@ -1,0 +1,23 @@
+#irToolDialog {
+  .dialog_title {
+    margin: 0;
+  }
+  .tools {
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tool_button {
+    appearance: none;
+    padding: 0.2em 0.8em;
+    border: 0;
+    border-radius: 0;
+    background: #000;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .dialog_close {
+    text-align: center;
+  }
+}

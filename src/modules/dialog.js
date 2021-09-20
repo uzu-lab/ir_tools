@@ -8,13 +8,14 @@ export function dialog(events) {
   dialog.setAttribute('id', 'irToolDialog');
   document.body.appendChild(dialog);
 
-  dialog.innerHTML = '<h2>IR案件補助ツール</h2><ul>';
+  let innerDialog = '<h2 class="dialog_title">IR案件補助ツール</h2><ul class="tools">';
   events.forEach(event => {
-    dialog.innerHTML += `
-      <li><button style="appearance:none; padding:0.2em 0.8em; border:0; border-radius:0; background:#000; color:#fff; font-size:x-large; cursor:pointer;" id="irTool${event.id}">${event.label}</button></li>
+    innerDialog += `
+      <li class="tool"><button class="tool_button" id="irTool${event.id}">${event.label}</button></li>
     `;
   });
-  dialog.innerHTML += '</ul><p style="text-align:center;"><button id="closeIrToolDialog">閉じる</button></p>';
+  innerDialog += '</ul><p class="dialog_close"><button class="close_button" id="closeIrToolDialog">閉じる</button></p>';
+  dialog.innerHTML = innerDialog;
 
   events.forEach(event => {
     document.getElementById('irTool' + event.id).addEventListener('click', event.callback);
