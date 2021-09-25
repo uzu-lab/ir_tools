@@ -1,4 +1,16 @@
 #irToolDialog {
+  box-sizing: border-box;
+  padding: 0;
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  &::backdrop {
+    background: rgba(#000, 0.5);
+    backdrop-filter: blur(3px);
+  }
+  .dialog_inner {
+    padding: 30px;
+  }
   .dialog_title {
     margin: 0;
   }
@@ -18,6 +30,7 @@
     cursor: pointer;
   }
   .dialog_close {
+    margin: 0;
     text-align: center;
   }
 }
