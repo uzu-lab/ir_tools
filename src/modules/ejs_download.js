@@ -1,5 +1,8 @@
 export function ejs_download() {
 
+  /**
+   * 表示中のページのソースを取得
+   */
   const fetchSelf = () => {
     const url = window.location.href;
     return fetch(url)
@@ -13,12 +16,18 @@ export function ejs_download() {
       });
   };
 
+  /**
+   * CSS/JSの挿入。挿入済みのコードは削除する。
+   */
   const insertHtml = (html) => {
     const ins_html = `<link href="/assets/css/custom.css" rel="stylesheet"><script src="/assets/js/custom.js"></script>`;
-    html = html.replace(/<\/head>/g, ins_html + '</head>');
+    html = html.replace(/(<link.+?>)?(<script.+?>)?<\/head>/g, ins_html + '</head>');
     return html;
   };
 
+  /**
+   * リネーム＆ダウンロード処理
+   */
   const download = (html) => {
     const link = document.createElement('a');
     const blob = new Blob([html], {type: 'text/html'});
@@ -36,8 +45,8 @@ export function ejs_download() {
     callback: () => {
       fetchSelf()
         .then((text) => {
-          const html = insertHtml(text);
-          download(html);
+          text = insertHtml(text);
+          download(text);
         })
     }
   };
