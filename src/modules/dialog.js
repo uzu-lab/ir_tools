@@ -14,7 +14,7 @@ export function dialog(events) {
       <li class="tool"><button class="tool_button" id="irTool${event.id}">${event.label}</button></li>
     `;
   });
-  innerDialog += '</ul><p class="dialog_close"><button class="close_button" id="closeIrToolDialog">閉じる</button></p></div>';
+  innerDialog += '</ul></div><div class="dialog_close"><button class="close_button" id="closeIrToolDialog">閉じる</button></div>';
   dialog.innerHTML = innerDialog;
 
   events.forEach(event => {

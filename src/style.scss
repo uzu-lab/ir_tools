@@ -1,6 +1,9 @@
 #irToolDialog {
   box-sizing: border-box;
+  position: relative;
   padding: 0;
+  border: 0;
+  box-shadow: 0px 0px 20px 5px #555;
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -12,12 +15,17 @@
     padding: 30px;
   }
   .dialog_title {
-    margin: 0;
+    margin: 0 0 20px;
   }
   .tools {
-    margin: 20px 0;
+    margin: 0;
     padding: 0;
     list-style: none;
+  }
+  .tool {
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
   }
   .tool_button {
     appearance: none;
@@ -28,9 +36,70 @@
     color: #fff;
     font-size: 20px;
     cursor: pointer;
+    &:focus {
+      border-radius: 0;
+      outline: none;
+    }
   }
   .dialog_close {
+    position: absolute;
+    right: 0;
+    top: 0;
     margin: 0;
+    .close_button {
+      position: relative;
+      appearance: none;
+      overflow: hidden;
+      width: 40px;
+      height: 0;
+      padding: 40px 0 0;
+      border: 0;
+      background: #000;
+      cursor: pointer;
+      &::before, &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 30px;
+        height: 4px;
+        margin: auto;
+        background: #fff;
+      }
+      &::before {
+        transform: rotate(-45deg);
+      }
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  // メタ情報自動入力
+  #irToolMetaFill {
+    display: none;
+  }
+  .meta_text_input {
+    width: 500px;
+  }
+  .meta_text_control {
+    margin-top: 20px;
     text-align: center;
+  }
+  .meta_table {
+    max-width: 800px;
+    font-size: 12px;
+    border-collapse: collapse;
+    th, td {
+      padding: 0.5em;
+      border: 1px solid #333;
+    }
+    thead th {
+      background: #555;
+      color: #fff;
+    }
   }
 }
