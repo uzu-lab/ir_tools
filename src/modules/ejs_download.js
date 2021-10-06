@@ -22,17 +22,7 @@ export function ejs_download() {
   const insertHtml = (html) => {
     const hdr_ins_html = `<link href="/assets/css/custom.css" rel="stylesheet"><script src="/assets/js/custom.js"></script>`;
     html = html.replace(/(<link.+?>)?(<script.+?>)?<\/head>/g, hdr_ins_html + '</head>');
-    const ftr_ins_html = `<script>
-      jQuery(function($){
-        $('a[href^="/"]').attr('href', function(i, v){
-          var local_href = '/';
-          if (v !== local_href) {
-            local_href = v.replace(/^(.+?)\/?(#.+)?$/, '$1.html$2');
-          }
-          return local_href;
-        });
-      });
-    </script>`;
+    const ftr_ins_html = `<script src="/assets/js/vendor/local.js"></script>`;
     html = html.replace(/<\/body>/g, ftr_ins_html + '</body>');
     return html;
   };
